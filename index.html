@@ -1,19 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Let's Chat !</title>
-    <link rel="stylesheet" href="static/style.css">   
+    <link rel='stylesheet' href='static/style.css'>
   </head>
   <body>
-    <ul id="messages"></ul>
-    <form id="form" action="">
-      <input id="input" autocomplete="off" /><button>Send</button>
+    <div id='popup'>
+      <h2>Welcome to Let's Chat !</h2>
+      <h3>Please enter your nickname :</h3>
+
+      <form id='name'>
+        <input type='text' id='input-nickname' placeholder='nickname'>
+        <button type='submit' onclick='closePopUp()'>Let's talk !</button>
+      </form>
+    </div>
+
+    <ul id='messages'></ul>
+    <form id='form'>
+      <input type='text' id='input-chat' placeholder='Type something...'
+        autocomplete='off'>
+      <button type='submit'>Send</button>
     </form>
   </body>
 
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="static/script.js"></script>
+  <script src='/socket.io/socket.io.js'></script>
+  <script src='static/script.js'></script>
 </html>

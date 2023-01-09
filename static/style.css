@@ -1,3 +1,7 @@
+* {
+  margin : 0;
+}
+
 body {
   margin: 0;
   padding-bottom: 3rem;
@@ -6,27 +10,28 @@ body {
 }
 
 #form {
+  display: none;
   background: rgba(0, 0, 0, 0.15);
   padding: 0.25rem;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  display: flex;
   height: 3rem;
   box-sizing: border-box;
   backdrop-filter: blur(10px);
 }
 
-#input {
-  border: none;
+input {
+  border: 1px solid gray;
+  
   padding: 0 1rem;
   flex-grow: 1;
-  border-radius: 2rem;
+  border-radius: 1px;
   margin: 0.25rem;
 }
 
-#input:focus {
+input:focus {
   outline: none;
 }
 
@@ -41,15 +46,44 @@ body {
 }
 
 #messages {
+  display: none;
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-#messages > li {
+#messages > div {
   padding: 0.5rem 1rem;
 }
 
-#messages > li:nth-child(odd) {
+#messages > div:nth-child(odd) {
   background: #efefef;
+}
+
+#messages > div {
+  display: flex;
+  flex-direction: column;
+}
+
+#popup {
+  position: fixed;
+  left: 25%;
+  top: 5%;
+  margin: auto;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  outline: 3px solid #333;
+}
+
+#popup h2, button {
+  margin: 1%;
+}
+
+#name {
+  display: flex;
+  width: 50%;
+  margin : 5px
 }
