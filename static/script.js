@@ -50,7 +50,7 @@ socket.on("chat message", function (msg, name) {
   var title = document.createElement("label");
   var content = document.createElement("label");
 
-  title.textContent = name;
+  title.textContent = name + " - " + new Date().toLocaleString();
   content.textContent = msg;
 
   messages.appendChild(item);
