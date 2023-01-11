@@ -1,5 +1,14 @@
+:root {
+  --color: rgb(255, 220, 154);
+  --white: white;
+  --gray: gray;
+  --black: black;
+  --light-gray: #efefef;
+  --server: #ffbbbb;
+}
+
 * {
-  margin : 0;
+  margin: 0;
 }
 
 body {
@@ -11,7 +20,6 @@ body {
 
 #form {
   display: none;
-  background: rgba(0, 0, 0, 0.15);
   padding: 0.25rem;
   position: fixed;
   bottom: 0;
@@ -23,11 +31,10 @@ body {
 }
 
 input {
-  border: 1px solid gray;
-  
+  border: 1px solid var(--gray);
   padding: 0 1rem;
   flex-grow: 1;
-  border-radius: 1px;
+  border-radius: 5px;
   margin: 0.25rem;
 }
 
@@ -36,13 +43,13 @@ input:focus {
 }
 
 #form > button {
-  background: #333;
-  border: none;
+  background: var(--color);
+    border: none;
   padding: 0 1rem;
   margin: 0.25rem;
-  border-radius: 3px;
+  border-radius: 5px;
   outline: none;
-  color: #fff;
+  color: var(--black);
 }
 
 #messages {
@@ -50,19 +57,44 @@ input:focus {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  max-width: 80%;
 }
 
-#messages > div {
-  padding: 0.5rem 1rem;
-}
-
-#messages > div:nth-child(odd) {
-  background: #efefef;
-}
-
-#messages > div {
+#messages > li > .content {
   display: flex;
   flex-direction: column;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  background: var(--light-gray);
+  width: fit-content;
+}
+
+#messages > .me > .content {
+  background: var(--color);
+}
+
+#messages > .me {
+  text-align: right;
+}
+
+#messages > .server > .content {
+  background: var(--server) ;
+}
+
+.sender {
+  font-weight: bold;
+}
+
+#messages > .me {
+  align-items: flex-end;
+  position: absolute;
+  right: 0px;
+}
+
+#messages > li {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem;
 }
 
 #popup {
@@ -75,15 +107,41 @@ input:focus {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  outline: 3px solid #333;
+  outline: 3px solid var(--gray);
 }
 
-#popup h2, button {
-  margin: 1%;
+#popup h2, h3,
+button, #name {
+  text-align: center;
+  max-width: max-content;
+  margin: 0.5rem;
 }
 
-#name {
-  display: flex;
-  width: 50%;
-  margin : 5px
+
+.date {
+  margin: 0.3rem;
+  color: var(--gray);
+}
+
+header {
+  display: none;
+  width: 100%;
+  height: fit-content;
+  background-color: var(--color);
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-direction: column;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin: 0.2rem;
+  color: var(--black);
+} 
+
+header h2 {
+  font-size: 1.5rem;
+  margin: 0.2rem;
+  color: var(--black);
 }

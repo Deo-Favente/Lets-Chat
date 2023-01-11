@@ -22,6 +22,7 @@ form1.addEventListener("submit", function (e) {
 // If a nickname is typed in the nickname form
 form2.addEventListener("submit", function (e) {
   e.preventDefault();
+  closePopUp()
   if (nickname.value) {
     socket.emit("user nickname", nickname.value); //Send the nickname to the server
     socket.value = "";
@@ -33,30 +34,44 @@ function closePopUp() {
   document.getElementById("popup").style.display = "none";
   document.getElementById("form").style.display = "flex";
   document.getElementById("messages").style.display = "block";
+  document.getElementById("header").style.display = "flex";
 }
 
 function showPopUp() {
   document.getElementById("popup").style.display = "block";
   document.getElementById("form").style.display = "none";
   document.getElementById("messages").style.display = "none";
+  document.getElementById("header").style.display = "none";
+
 }
 
 // Receive information part
 
-// When a message is received from an user
+// When a message is received from the server
 socket.on("chat message", function (msg, name) {
   // Create the message element
-  var item = document.createElement("div");
-  var title = document.createElement("label");
-  var content = document.createElement("label");
+  var item = document.createElement("li");
+  var content = document.createElement("div");
+  var sender = document.createElement("span");
+  var text = document.createElement("span");
+  var date = document.createElement("span");
 
-  title.textContent = name + " - " + new Date().toLocaleString();
-  content.textContent = msg;
+  sender.textContent = name;
+  text.textContent = msg;
+  date.textContent = new Date().toLocaleString();
+
+  sender.className = "sender";
+  text.className = "text";
+  date.className = "date";
+  item.className = "message";
+  content.className = "content";
 
   messages.appendChild(item);
 
-  item.appendChild(title);
   item.appendChild(content);
+  item.appendChild(date);
+  content.appendChild(sender);
+  content.appendChild(text);
 
   // Scroll to the bottom of the chat
   window.scrollTo(0, document.body.scrollHeight);
@@ -65,30 +80,58 @@ socket.on("chat message", function (msg, name) {
 // When a user join the chat
 socket.on("user nickname", function (name) {
   // Create the message element
-  var item = document.createElement("div");
-  var content = document.createElement("label");
+    var item = document.createElement("li");
+    var content = document.createElement("div");
+    var sender = document.createElement("span");
+    var text = document.createElement("span");
+    var date = document.createElement("span");
 
-  content.textContent = name + " has joined the chat";
+    sender.textContent = "Server";
+    text.textContent = name + " joined the chat.";
+    date.textContent = new Date().toLocaleString();
 
-  messages.appendChild(item);
+    sender.className = "sender";
+    text.className = "text";
+    date.className = "date";
+    item.className = "message server";
+    content.className = "content";
 
-  item.appendChild(content);
+    messages.appendChild(item);
 
-  // Scroll to the bottom of the chat
-  window.scrollTo(0, document.body.scrollHeight);
+    item.appendChild(content);
+    item.appendChild(date);
+    content.appendChild(sender);
+    content.appendChild(text);
+
+    // Scroll to the bottom of the chat
+    window.scrollTo(0, document.body.scrollHeight);
 });
 
 socket.on("user leave", function (name) {
-  // We send the information to all the connected sockets
-  var item = document.createElement("div");
-  var content = document.createElement("label");
+// Create the message element
+    var item = document.createElement("li");
+    var content = document.createElement("div");
+    var sender = document.createElement("span");
+    var text = document.createElement("span");
+    var date = document.createElement("span");
 
-  content.textContent = name + " has left the chat";
+    sender.textContent = "Server";
+    text.textContent = name + " left the chat.";
+    date.textContent = new Date().toLocaleString();
 
-  messages.appendChild(item);
+    sender.className = "sender";
+    text.className = "text";
+    date.className = "date";
+    item.className = "message server";
+    content.className = "content";
 
-  item.appendChild(content);
+    messages.appendChild(item);
 
-  // Scroll to the bottom of the chat
-  window.scrollTo(0, document.body.scrollHeight);
+    item.appendChild(content);
+    item.appendChild(date);
+    content.appendChild(sender);
+    content.appendChild(text);
+
+    // Scroll to the bottom of the chat
+    window.scrollTo(0, document.body.scrollHeight);
 });

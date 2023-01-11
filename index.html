@@ -8,17 +8,31 @@
     <link rel='stylesheet' href='static/style.css'>
   </head>
   <body>
+    <header id="header">
+      <h1>Let's Chat !</h1>
+      <h2>X users online</h2>
+    </header>
+
     <div id='popup'>
       <h2>Welcome to Let's Chat !</h2>
       <h3>Please enter your nickname :</h3>
 
       <form id='name'>
-        <input type='text' id='input-nickname' placeholder='nickname'>
-        <button type='submit' onclick='closePopUp()'>Let's talk !</button>
+        <input type='text' id='input-nickname' minlength='1' maxlength='10' placeholder='nickname' required>
+        <button type='submit'>Let's talk !</button>
       </form>
     </div>
 
-    <ul id='messages'></ul>
+    <ul id='messages'>
+      <li class='message server'>
+        <div class="content">
+          <span class='sender'>Server</span>
+          <span class='text'>Hi everyone !</span>
+        </div>
+        <span class="date">01/01/2000 à 00:00:00</span>
+      </li>
+    </ul>
+
     <form id='form'>
       <input type='text' id='input-chat' placeholder='Type something...'
         autocomplete='off'>
