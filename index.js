@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 });
 
 // Object of connected players (socket.id:nickname)
-var onlineUsers = {};
+let onlineUsers = {};
 
 // An new connexion etablished
 io.on("connection", (socket) => {
@@ -25,14 +25,14 @@ io.on("connection", (socket) => {
   var nickname;
 
   // The connexion close
-  socket.on("disconnect", (socket) => {
+  socket.on("disconnect", () => {
     //If the connected user was registred in online users
     if (Object.keys(onlineUsers).includes(id)) {
       delete onlineUsers[id]; //We remove him from the object
       // We send the information to all the connected sockets
     }
     // We send the information to all the connected sockets
-    io.emit("user leave", nickname);
+    io.emit("user leave", nickname, onlineUsers.length);
   });
 
   // The connected user send a message in the chat
@@ -47,7 +47,8 @@ io.on("connection", (socket) => {
     onlineUsers[id] = nickname;
 
     // We send the information to all the connected sockets
-    io.emit("user nickname", nickname);
+    var size = Object.keys(onlineUsers).length;
+    io.emit("user nickname", nickname, size);
   });
 });
 
