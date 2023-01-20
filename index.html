@@ -5,14 +5,21 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Let's Chat !</title>
+    <link rel='icon' href='static/icon.ico'>
     <link rel='stylesheet' href='static/style.css'>
   </head>
   <body>
-    <header id="header">
-      <h1>Let's Chat !</h1>
-      <h2>X users online</h2>
-    </header>
-
+    <nav class='navbar'>
+      <a href='#' class='logo'>Let's Chat !</a>
+      <div class="nav-links">
+      <ul>
+        <li class="active"><a href='#'>Chat</a></li>
+        <li><a href='#'>Rules</a></li>
+        <li><a href='#'>Settings</a></li>
+      </ul>
+    </div>
+    </nav>
+    <!--
     <div id='popup'>
       <h2>Welcome to Let's Chat !</h2>
       <h3>Please enter your nickname :</h3>
@@ -38,8 +45,9 @@
         autocomplete='off'>
       <button type='submit'>Send</button>
     </form>
-  </body>
-
+  -->
+  </body> 
+  
   <script src='/socket.io/socket.io.js'></script>
   <script src='static/script.js'></script>
 </html>

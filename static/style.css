@@ -1,147 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Signika+Negative:display=swap");
+
 :root {
-  --color: rgb(255, 220, 154);
-  --white: white;
-  --gray: gray;
-  --black: black;
-  --light-gray: #efefef;
-  --server: #ffbbbb;
+  --white-gray : #F5F5F5;
+  --light-gray : #898989;
 }
 
 * {
   margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  padding-bottom: 3rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif;
+  font-family: "Signika Negative", sans-serif;
 }
 
-#form {
-  display: none;
-  padding: 0.25rem;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 3rem;
-  box-sizing: border-box;
-  backdrop-filter: blur(10px);
-}
-
-input {
-  border: 1px solid var(--gray);
-  padding: 0 1rem;
-  flex-grow: 1;
-  border-radius: 5px;
-  margin: 0.25rem;
-}
-
-input:focus {
-  outline: none;
-}
-
-#form > button {
-  background: var(--color);
-    border: none;
-  padding: 0 1rem;
-  margin: 0.25rem;
-  border-radius: 5px;
-  outline: none;
-  color: var(--black);
-}
-
-#messages {
-  display: none;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  max-width: 80%;
-}
-
-#messages > li > .content {
+.navbar {
+  position: absolute;
+  padding: 30px;
   display: flex;
-  flex-direction: column;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  background: var(--light-gray);
-  width: fit-content;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
 }
 
-#messages > .me > .content {
-  background: var(--color);
-}
-
-#messages > .me {
-  text-align: right;
-}
-
-#messages > .server > .content {
-  background: var(--server) ;
-}
-
-.sender {
+.navbar .logo {
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
-#messages > .me {
-  align-items: flex-end;
-  position: absolute;
-  right: 0px;
-}
-
-#messages > li {
+.navbar .nav-links ul {
   display: flex;
-  flex-direction: column;
-  margin: 0.5rem;
 }
 
-#popup {
-  position: fixed;
-  left: 25%;
-  top: 5%;
-  margin: auto;
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  outline: 3px solid var(--gray);
+.navbar .nav-links ul li.active a {
+  color : red;
+  font-weight: bold;
 }
 
-#popup h2, h3,
-button, #name {
-  text-align: center;
-  max-width: max-content;
-  margin: 0.5rem;
+.navbar .nav-links ul li {
+  margin: 0 25px;
 }
 
-
-.date {
-  margin: 0.3rem;
-  color: var(--gray);
-}
-
-header {
-  display: none;
-  width: 100%;
-  height: fit-content;
-  background-color: var(--color);
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 2rem;
-  flex-direction: column;
-}
-
-header h1 {
-  font-size: 2rem;
-  margin: 0.2rem;
-  color: var(--black);
-} 
-
-header h2 {
-  font-size: 1.5rem;
-  margin: 0.2rem;
-  color: var(--black);
-}
