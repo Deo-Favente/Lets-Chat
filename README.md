@@ -37,4 +37,4 @@ npm start index.js
 5. Open your web browser and navigate to `http://localhost:3000` to start chatting.
 
 ## 🤝 Contributions
-Contributions to this project are welcome! If you would like to suggest a feature or report a bug, please open an issue on the repository's GitHub page. 
+Contributions to this project are welcome! If you would like to suggest a feature or report a bug, please open an issue on the repository's GitHub page.
